@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add your taco</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <form class="master-form" action="/catalog/item/create" method="POST">
+        <label for="title">Item</label>
+        <input type="text" id="title" name="title">
+        <br>
+        <label for="description">Enter Description</label>
+        <input type="text" id="description" name="description">
+        <br>
+        <label for="categories" id="categories" name="categories">Category</label>
+        <select name="categories" id="categories">
+            <% if (data.categories) { %>
+                <% data.categories.forEach((category) => { %>
+                    <option value= <%= category.title %>><%= category.title %></option> 
+                <% }) %>
+            <% } else { %>
+                <option>None</option>
+            <% } %>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
