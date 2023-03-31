@@ -6,3 +6,53 @@ body {
 a {
   color: #00B7FF;
 }
+
+body{
+  height: 100vh;
+  display: flex;
+  gap: 1rem;
+}
+
+.sidebar-master{
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-master li {
+  list-style: none;
+  gap: 1rem;
+}
+
+.sidebar-container-1{
+  border-bottom: 0.2px solid black;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-container-2{
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.master-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.master-form{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+a:hover{
+  color: #0056b3;
+  text-decoration: underline;
+}

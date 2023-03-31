@@ -10,10 +10,10 @@
 <body>
     <%- include("./partials/sidebar.ejs") %>
     <div class="master-content">
-        <h1><%= title %></h1>
-        <p>Item count: <%= data.itemCount %></p>
-        <p>Category count: <%= data.categoryCount %></p>
-        <p>Item instance count: <%= data.itemInstanceCount %></p>
+        <h1>All Items</h1>
+        <% data.forEach(element => { %>
+            <div><strong><a href= <%= element.id %>><%= element.title %> </a> | <%= element.launchDate %></strong></div>
+        <% }) %>
     </div>
 </body>
 </html>

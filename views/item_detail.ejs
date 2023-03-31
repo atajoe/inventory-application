@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include("./partials/sidebar.ejs") %>
+    <div class="master-content">
+        <h1>Item: <%= data.title %></h1>
+        <p><strong>Category: </strong><%= data.categoryTitle %></p>
+        <p><strong>Description: </strong><%= data.description %></p>
+        <p><strong>Launch Date: </strong><%= data.launchDate %></p>
+        <% if (data.instances.length > 0) { %>
+            <h1>Available SKUs</h1>
+            <% data.instances.forEach(item => { %>
+                <p><strong>ID:</strong> <a href="/catalog/iteminstance/<%= item._id %>"><%= item._id %></a> -
+                <%= item.condition %>
+                <%= item.price %></p>
+            <% }) %>
+            <% } else { %>
+             <h1>Nothing to display...</h1>
+        <% } %>
+        <div class="action-items">
+            <% let updateurl = `/update/${data.categoryTitle}`%>
+            <a href= 'update/<%= data.id %>'>Update Item</a>
+            <a href= 'delete/<%= data.id %>'>Delete Item</a>
+        </div>
+    </div>
+</body>
+</html>

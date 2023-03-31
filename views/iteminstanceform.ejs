@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include("./partials/sidebar.ejs") %>
+    <div class="master-content">
+        <form class="master-form" action="/catalog/iteminstance/create" method="POST">
+            <label>Select an item:</label>
+            <select name="item" id="item">
+                <% if (data) { %>
+                    <% data.forEach((item) => { %>
+                        <option value= <%= item.title %>><%= item.title %></option> 
+                    <% }) %>
+                <% } else { %>
+                    <option>None</option>
+                <% } %>
+            </select>
+            <br>
+            <label for="condition">Select condition</label>
+            <select name="condition" id="condition">
+                <option value="New">New</option>
+                <option value="New">Used</option>
+                <option value="New">Refurbished</option>
+            </select>
+            <br>
+            <label for="title">Price:</label>
+            <input type="text" id="price" name="price" placeholder="Price of item">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

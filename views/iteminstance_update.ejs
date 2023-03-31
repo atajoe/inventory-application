@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <%- include("./partials/sidebar.ejs") %>
+    <div class="master-content">
+        <h1>Update an item instance</h1>
+        <form class="master-form" action="/catalog/iteminstance/update/:id" method="POST">
+            <label>Select an item:</label>
+            <select name="item" id="item">
+                <% if (data) { %>
+                    <option value= <%= data.item.title %>><%= data.item.title %></option> 
+                <% } else { %>
+                    <option>None</option>
+                <% } %>
+            </select>
+            <br>
+            <label for="condition">Select condition</label>
+            <select name="condition" id="condition">
+                <option value="New">New</option>
+                <option value="Used">Used</option>
+                <option value="Refurbished">Refurbished</option>
+            </select>
+            <br>
+            <label for="title">Price:</label>
+            <input type="text" id="price" name="price" value="<%=data.price%>">
+            <br>
+            <input type="hidden" name="iteminstanceid", required="true", value=<%=data._id%>>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

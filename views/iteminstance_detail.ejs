@@ -10,10 +10,11 @@
 <body>
     <%- include("./partials/sidebar.ejs") %>
     <div class="master-content">
-        <h1><%= title %></h1>
-        <p>Item count: <%= data.itemCount %></p>
-        <p>Category count: <%= data.categoryCount %></p>
-        <p>Item instance count: <%= data.itemInstanceCount %></p>
+        <h1> ID: <%= data._id %></h1>
+        <h3>Name: <a href="/catalog/item/<%=data.item._id%>"><%= data.item.title %></a> - $<%= data.price %></h3>
+        <h3>Condition: <%= data.condition %></h3>
+        <a href="update/<%=data._id%>">Update ItemInstance</a>
+        <a href="delete/<%=data._id%>">Delete ItemInstance</a>
     </div>
 </body>
 </html>

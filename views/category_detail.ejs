@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include("./partials/sidebar.ejs") %>
+    <div class="master-content">
+        <h1>Category: <%= data.category.title %></h1>
+        <h3><strong>Description:</strong> <%= data.category.description %></h3>
+        <h2>Associated Items</h2>
+        <% if (data.category_items.length > 0) { %>
+            <% data.category_items.forEach(element => { %>
+                <a href="/catalog/item/<%=element._id%>"><%= element.title %></a>
+                <p><%= element.description %></p>
+            <% }) %>
+        <% } %>
+        <div class="action-items">
+            <a href= 'update/<%= data.category._id %>'>Update Item</a>
+            <a href= 'delete/<%= data.category._id %>'>Delete Item</a>
+        </div>
+    </div>
+</body>
+</html>

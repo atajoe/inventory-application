@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <%- include("./partials/sidebar.ejs") %>
+    <div class="master-content">
+        <h1>Update a category</h1>
+        <form class="master-form" action="/catalog/category/update/:id" method="POST">
+            <label for="title">Enter category title:</label>
+            <input type="text" id="title" name="title" value="<%=data.title%>">
+            <br>
+            <label for="description">Enter Description</label>
+            <input type="text" id="description" name="description" value="<%=data.description%>">
+            <input type="hidden" name="categoryid", required="true", value=<%=data._id%>>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

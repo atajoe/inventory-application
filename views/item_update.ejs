@@ -5,22 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
     <%- include("./partials/sidebar.ejs") %>
     <div class="master-content">
-        <form class="master-form" action="/catalog/item/create" method="POST">
+        <h1>Update an item</h1>
+        <form class="master-form" action="/catalog/item/update/:id" method="POST">
             <label for="title">Item</label>
-            <input type="text" id="title" name="title">
+            <input type="text" id="title" name="title" value="<%=data.title%>">
             <br>
             <label for="description">Enter Description</label>
-            <input type="text" id="description" name="description">
+            <input type="text" id="description" name="description" value="<%=data.description%>">
             <br>
             <label for="category" id="category" name="category">Category</label>
             <select name="category" id="category">
-                <% if (data.categories) { %>
-                    <% data.categories.forEach((category) => { %>
+                <% if (categories) { %>
+                    <% categories.forEach((category) => { %>
                         <option value= <%= category.title %>><%= category.title %></option> 
                     <% }) %>
                 <% } else { %>
@@ -28,7 +29,8 @@
                 <% } %>
             </select>
             <label for="launchDate">Launch Date: </label>
-            <input type="date" name="launchDate" id="launchDate">
+            <input type="date" name="launchDate" id="launchDate" value="<%=data.launchDate%>">
+            <input type="hidden" name="itemid", required="true", value=<%=_id%>>
             <input type="submit" value="Submit">
         </form>
     </div>
